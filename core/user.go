@@ -5,6 +5,5 @@ type User struct {
 	Name     string
 	Username string
 	Email    string
-	Rank     string
 	Password string
 }

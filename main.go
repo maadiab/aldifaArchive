@@ -9,6 +9,14 @@ import (
 	"github.com/maadiab/aldifaArchive/routes"
 )
 
+func init() {
+	fs := http.FileServer(http.Dir("static"))
+	http.Handle("/static/", http.StripPrefix("static", fs))
+
+	storage := http.FileServer(http.Dir("storage"))
+	http.Handle("/storage/", http.StripPrefix("storage", storage))
+}
+
 func main() {
 
 	ctx := context.Background()
@@ -30,7 +38,6 @@ func main() {
 	}
 
 	r := routes.Router()
-
 	log.Println("server is running at port: 8080 ...")
 	http.ListenAndServe(":8080", r)
 
