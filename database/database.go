@@ -40,7 +40,7 @@ func ConnectDB(ctx context.Context) (*sqlx.DB, error) {
 	return db, err
 }
 
-func CreateUsers() error {
+func CreateUsersTable() error {
 	_, err := DB.Exec(`CREATE TABLE IF NOT EXISTS users (
 		id SERIAL PRIMARY KEY,
 		name VARCHAR (255),

@@ -9,9 +9,15 @@ func Router() *mux.Router {
 
 	router := mux.NewRouter()
 
-	router.HandleFunc("/", Handlers.ServeHome)
-	router.HandleFunc("/login", Handlers.ServeLogin)
-	router.HandleFunc("/signup", Handlers.ServeSignup)
+	router.HandleFunc("/", Handlers.ServeLogin)
+	// router.HandleFunc("/login", Handlers.ServeLogin)
+	router.HandleFunc("/register", Handlers.ServeSignup).Methods("GET")
+	router.HandleFunc("/signup", Handlers.SignupHandler).Methods("POST")
+	router.HandleFunc("/signin", Handlers.SigninHandler).Methods("POST")
+
+	router.HandleFunc("/dashboard", Handlers.ServeDashboard)
+	router.HandleFunc("/pictures", Handlers.ServeDashboard)
+	// router.HandleFunc("/static/", Handlers.ServeForbidden)
 
 	return router
 }

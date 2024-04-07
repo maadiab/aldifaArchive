@@ -1,9 +1,11 @@
 package main
 
 import (
+	"context"
 	"log"
 	"net/http"
 
+	Database "github.com/maadiab/aldifaArchive/database"
 	Handlers "github.com/maadiab/aldifaArchive/handlers"
 	"github.com/maadiab/aldifaArchive/routes"
 )
@@ -18,23 +20,23 @@ import (
 
 func main() {
 
-	// ctx := context.Background()
+	ctx := context.Background()
 
-	// _, err := Database.ConnectDB(ctx)
+	_, err := Database.ConnectDB(ctx)
 
-	// if err != nil {
-	// 	log.Println("Error Connecting Database !!!", err)
-	// }
+	if err != nil {
+		log.Println("Error Connecting Database !!!", err)
+	}
 
-	// err = Database.CreateUsers()
-	// if err != nil {
-	// 	log.Println("main: Error Creating users Table !!!", err)
-	// }
+	err = Database.CreateUsersTable()
+	if err != nil {
+		log.Println("main: Error Creating users Table !!!", err)
+	}
 
-	// err = Database.CreatePhotographerTable()
-	// if err != nil {
-	// 	log.Println("main: Error Creating photographers Table !!!", err)
-	// }
+	err = Database.CreatePhotographerTable()
+	if err != nil {
+		log.Println("main: Error Creating photographers Table !!!", err)
+	}
 
 	r := routes.Router()
 	r.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
@@ -44,6 +46,6 @@ func main() {
 	log.Println("server is running at port: 8080 ...")
 	http.ListenAndServe(":8080", r)
 
-	// defer Database.DB.Close()
+	defer Database.DB.Close()
 
 }

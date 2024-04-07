@@ -1,22 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- <link href="https://cdn.tailwindcss.com" rel="stylesheet"> -->
+
+    <link rel="stylesheet" href="./static/css/style.css">
+
     <title>MOD ARCHIVE LOGIN</title>
 </head>
 
-<body>
 
-<section class="h-screen bg-slate-500 text-lg">
-    <form action="/loginProcess" method="post" class="flex flex-col justify-center align-center">
-        <input type="text" name="username" id="username" placeholder="اسم المستخدم">
-        <input type="text" name="password" id="password" placeholder="كلمة المرور">
-        <button type="submit" name="submit" id="submit">تسجيل الدخول</button>
-    </form>
-</section>
+
+    <body class="h-screen overflow-hidden flex items-center justify-center">
+     
+   
+
+<form class="max-w-sm mx-auto w-full" action="/signin" method="post">
+  
+    <div class="mb-5">
+      <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">اسم المستخدم</label>
+      <input type="username" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="اسم المستخدم" required />
+    </div>
+    <div class="mb-5">
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">كلمة المرور</label>
+      <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="كلمة المرور" required />
+    </div>
+    <div class="flex items-start mb-5">
+      <div class="flex items-center h-5">
+        <input id="remember" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
+      </div>
+      <label for="remember" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">تذكرني</label>
+    </div>
+    <div class="flex items-center justify-center">
+      <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">تسجيل الدخول</button>
+    </div>
+  </form>
+  
 </body>
 
 </html>
